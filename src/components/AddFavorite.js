@@ -6,7 +6,7 @@ class AddFavorite extends React.Component {
   render() {
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" name="city" placeholder="City name" />
+        <input type="text" name="city" placeholder="City name" required={true} />
         <input type="submit" value="Add to favorite"/>
       </form>
     );
@@ -15,7 +15,6 @@ class AddFavorite extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.props);
     this.props.addFavorite(e.currentTarget.elements.city.value);
   }
 }

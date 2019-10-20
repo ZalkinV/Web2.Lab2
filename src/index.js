@@ -36,7 +36,6 @@ function reducer(state, action) {
 function middleware(store) {
   return next => action => {
     console.log("Old state", store.getState());
-    console.log("Action", action);
     next(action);
     console.log("New state", store.getState());
   }
