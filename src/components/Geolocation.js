@@ -4,10 +4,10 @@ class Geolocation extends React.Component {
   constructor(props) {
     super(props);
     this.state =
-      {
-        latitude: null,
-        longitude: null
-      };
+    {
+      latitude: null,
+      longitude: null
+    };
   }
 
   render() {
@@ -15,7 +15,7 @@ class Geolocation extends React.Component {
       <div>
         <button
           onClick={() => this.handleClick()}
-        >Обновить геолокацию</button>
+        >Get geolocation</button>
         <p>Position: {this.state.latitude}, {this.state.longitude} </p>
       </div>
     );
