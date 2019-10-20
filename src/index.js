@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 
 
 const initialState = {
@@ -46,19 +47,11 @@ store.subscribe(() => {
   console.log("Store was changed!", store.getState());
 });
 
-store.dispatch({
-  type: 1,
-  payload: 1
-});
-
-store.dispatch({
-  type: 1,
-  payload: 2
-});
-
 
 ReactDOM.render(
-  <App name="Viktor" />,
+  <Provider store={store}>
+    <App name="Viktor" />
+  </Provider>,
   document.getElementById('root')
 );
 
