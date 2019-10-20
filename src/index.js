@@ -21,6 +21,7 @@ const initialState = {
 };
 
 function reducer(state, action) {
+  console.log("reducer", action);
   state = {
     ...state,
     weather: {
@@ -28,6 +29,7 @@ function reducer(state, action) {
       city: action.payload
     }
   };
+  
   return state;
 }
 

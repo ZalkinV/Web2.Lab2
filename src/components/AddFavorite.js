@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+
 
 class AddFavorite extends React.Component {
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={(e) => this.handleSubmit(e)}>
         <input type="text" name="city" placeholder="City name" />
         <input type="submit" value="Add to favorite"/>
       </form>
@@ -13,8 +15,24 @@ class AddFavorite extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(e.currentTarget.elements.city.value);
+    console.log(this.props);
+    this.props.addFavorite(e.currentTarget.elements.city.value);
   }
 }
 
-export default AddFavorite;
+function mapStateToProps(){
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addFavorite: (city) => {
+      dispatch({
+        type: 1,
+        payload: city
+      });
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddFavorite);
