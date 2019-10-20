@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
   favorites: []
 };
 
-function reducer(state = initialState, action) {
+function reducer(state, action) {
   state = {
     ...state,
     city: action.payload,
@@ -27,7 +27,21 @@ function reducer(state = initialState, action) {
   return state;
 }
 
-const store = createStore(reducer);
+function middleware(store) {
+  return next => action => {
+    console.log("Old state", store.getState());
+    console.log("Action", action);
+    next(action);
+    console.log("New state", store.getState());
+  }
+}
+
+const store = createStore(
+  reducer,
+  initialState,
+  applyMiddleware(middleware)
+);
+
 store.subscribe(() => {
   console.log("Store was changed!", store.getState());
 });
