@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 
 const initialState = {
   weather: {
-    cityName: undefined,
+    city: undefined,
     temp: undefined,
     wind: undefined,
     humidity: undefined,
@@ -23,7 +23,10 @@ const initialState = {
 function reducer(state, action) {
   state = {
     ...state,
-    city: action.payload,
+    weather: {
+      ...state.weather,
+      city: action.payload
+    }
   };
   return state;
 }
