@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+
+import './index.css';
+import App from './components/App';
+import reducer from "./reducers";
 
 
 const initialState = {
@@ -19,19 +21,6 @@ const initialState = {
   },
   favorites: []
 };
-
-function reducer(state, action) {
-  console.log("reducer", action);
-  state = {
-    ...state,
-    weather: {
-      ...state.weather,
-      city: action.payload
-    }
-  };
-  
-  return state;
-}
 
 function middleware(store) {
   return next => action => {
