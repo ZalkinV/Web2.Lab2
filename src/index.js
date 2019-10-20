@@ -2,43 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
 import './index.css';
 import App from './components/App';
-import reducer from "./reducers";
-
-
-const initialState = {
-  weather: {
-    city: undefined,
-    temp: undefined,
-    wind: undefined,
-    humidity: undefined,
-    pressure: undefined,
-    coords: undefined
-  },
-  favorites: []
-};
-
-function middleware(store) {
-  return next => action => {
-    console.log("Old state", store.getState());
-    next(action);
-    console.log("New state", store.getState());
-  }
-}
-
-const store = createStore(
-  reducer,
-  initialState,
-  applyMiddleware(middleware)
-);
-
-store.subscribe(() => {
-  console.log("Store was changed!", store.getState());
-});
+import store from "./store";
 
 
 ReactDOM.render(
