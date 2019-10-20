@@ -28,7 +28,10 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  state.city = action.payload;
+  state = {
+    ...state,
+    city: action.payload
+  };
   return state;
 }
 
