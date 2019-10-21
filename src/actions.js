@@ -4,9 +4,9 @@ export const Actions = Object.freeze({
 });
 
 
-export function addFavorite(city) {
+export function addFavorite(cityName) {
   return {
     type: Actions.ADD,
-    payload: city
+    payload: cityName
   };
 }

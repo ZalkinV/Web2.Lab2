@@ -4,7 +4,7 @@ import reducer from "./reducers";
 
 const initialState = {
   weather: {
-    city: undefined,
+    cityName: undefined,
     temp: undefined,
     wind: undefined,
     humidity: undefined,

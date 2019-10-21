@@ -6,7 +6,7 @@ class AddFavorite extends React.Component {
   render() {
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" name="city" placeholder="City name" required={true} />
+        <input type="text" name="cityName" placeholder="City name" required={true} />
         <input type="submit" value="Add to favorite"/>
       </form>
     );
@@ -15,7 +15,7 @@ class AddFavorite extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.addFavorite(e.currentTarget.elements.city.value);
+    this.props.addFavorite(e.currentTarget.elements.cityName.value);
   }
 }
 
@@ -25,10 +25,10 @@ function mapStateToProps(){
 
 function mapDispatchToProps(dispatch) {
   return {
-    addFavorite: (city) => {
+    addFavorite: (cityName) => {
       dispatch({
         type: 1,
-        payload: city
+        payload: cityName
       });
     }
   };
