@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { addFavorite } from "../actions";
 
 
 class AddFavorite extends React.Component {
@@ -22,10 +23,7 @@ class AddFavorite extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     addFavorite: (cityName) => {
-      dispatch({
-        type: 1,
-        payload: cityName
-      });
+      dispatch(addFavorite(cityName));
     }
   };
 }

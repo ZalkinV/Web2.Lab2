@@ -6,7 +6,7 @@ export const Actions = Object.freeze({
 
 export function addFavorite(cityName) {
   return {
-    type: Actions.ADD,
+    type: Actions.ADD_FAVORITE,
     payload: cityName
   };
 }
