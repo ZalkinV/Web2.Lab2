@@ -19,6 +19,9 @@ function reducer(state, action) {
       break;
     
     case Actions.DELETE_FAVORITE:
+      let indexToDelete = state.favorites.indexOf(action.payload);
+      if (indexToDelete !== -1)
+        state.favorites.splice(indexToDelete, 1);
       break;
 
     default:

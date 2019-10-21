@@ -10,3 +10,10 @@ export function addFavorite(cityName) {
     payload: cityName
   };
 }
+
+export function deleteFavorite(cityName) {
+  return {
+    type: Actions.DELETE_FAVORITE,
+    payload: cityName
+  };
+}
