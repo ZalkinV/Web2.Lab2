@@ -15,7 +15,7 @@ class Favorites extends React.Component {
         {
           this.props.favorites.map((item) => {
             return (
-              <Favorite cityName={item} onClick={() => this.props.deleteFavorite(item)}/>
+              <Favorite key={item} cityName={item} onClick={() => this.props.deleteFavorite(item)} />
             );
           })
         }
