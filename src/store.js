@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
+
 import reducer from "./reducers";
+import loggerMiddleware from "./middlewares";
 
 
 const initialState = {
@@ -14,18 +16,10 @@ const initialState = {
   favorites: []
 };
 
-function middleware(store) {
-  return next => action => {
-    console.log("Old state", store.getState());
-    next(action);
-    console.log("New state", store.getState());
-  }
-}
-
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(middleware)
+  applyMiddleware(loggerMiddleware)
 );
 
 store.subscribe(() => {
