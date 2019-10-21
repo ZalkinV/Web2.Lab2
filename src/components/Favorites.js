@@ -2,11 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { deleteFavorite } from "../actions";
 
+import AddFavorite from "./AddFavorite"
+
+
 class Favorites extends React.Component {
   render() {
     return (
       <div>
         <h1>Favorites</h1>
+        <AddFavorite />
         {
           this.props.favorites.map((item) => {
             return (
