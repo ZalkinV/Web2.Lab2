@@ -19,10 +19,6 @@ class AddFavorite extends React.Component {
   }
 }
 
-function mapStateToProps(){
-  return {};
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     addFavorite: (cityName) => {
@@ -34,4 +30,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddFavorite);
+export default connect(null, mapDispatchToProps)(AddFavorite);
