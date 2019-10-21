@@ -13,6 +13,9 @@ function reducer(state, action) {
 
   switch (action.type) {
     case Actions.ADD_FAVORITE:
+      let isAlreadyFavorite = state.favorites.includes(action.payload);
+      if (!isAlreadyFavorite)
+        state.favorites.push(action.payload);
       break;
     
     case Actions.DELETE_FAVORITE:
