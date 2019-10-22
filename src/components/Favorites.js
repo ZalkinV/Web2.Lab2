@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addFavorite, deleteFavorite } from "../actions";
 
 import AddFavorite from "./AddFavorite"
-import Favorite from "./Favorite";
+import Weather from "./Weather";
 
 
 class Favorites extends React.Component {
@@ -15,7 +15,10 @@ class Favorites extends React.Component {
         {
           this.props.favorites.map((item) => {
             return (
-              <Favorite key={item} cityName={item} onClick={() => this.props.deleteFavorite(item)} />
+              <div key={item}>
+                <Weather cityName={item} />
+                <button onClick={() => this.props.deleteFavorite(item)}>X</button>
+              </div>
             );
           })
         }
