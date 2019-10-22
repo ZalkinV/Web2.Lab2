@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteFavorite } from "../actions";
+import { addFavorite, deleteFavorite } from "../actions";
 
 import AddFavorite from "./AddFavorite"
 import Favorite from "./Favorite";
@@ -11,7 +11,7 @@ class Favorites extends React.Component {
     return (
       <div>
         <h1>Favorites</h1>
-        <AddFavorite />
+        <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
         {
           this.props.favorites.map((item) => {
             return (
@@ -21,6 +21,12 @@ class Favorites extends React.Component {
         }
       </div>
     );
+  }
+
+  handleAddFavorite(e) {
+    e.preventDefault();
+
+    this.props.addFavorite(e.currentTarget.elements.cityName.value);
   }
 }
 
@@ -33,6 +39,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    addFavorite: (cityName) => {
+      dispatch(addFavorite(cityName));
+    },
+
     deleteFavorite: (cityName) => {
      dispatch(deleteFavorite(cityName)); 
     }
