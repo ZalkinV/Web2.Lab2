@@ -4,6 +4,7 @@ import { addFavorite, deleteFavorite } from "../actions";
 
 import AddFavorite from "./AddFavorite"
 import Weather from "./Weather";
+import { fetchWeatherByCityName } from "../middlewares";
 
 
 class Favorites extends React.Component {
@@ -28,8 +29,10 @@ class Favorites extends React.Component {
 
   handleAddFavorite(e) {
     e.preventDefault();
-
-    this.props.addFavorite(e.currentTarget.elements.cityName.value);
+    
+    const cityName = e.currentTarget.elements.cityName.value;
+    this.props.addFavorite(cityName);
+    this.props.fetchWeatherByCityName(cityName);
   }
 }
 
@@ -48,6 +51,10 @@ function mapDispatchToProps(dispatch) {
 
     deleteFavorite: (cityName) => {
      dispatch(deleteFavorite(cityName)); 
+    },
+
+    fetchWeatherByCityName: (cityName) => {
+      dispatch(fetchWeatherByCityName(cityName));
     }
   };
 }

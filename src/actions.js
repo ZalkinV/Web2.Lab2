@@ -2,7 +2,7 @@ export const Actions = Object.freeze({
   ADD_FAVORITE: "ADD_FAVORITE",
   DELETE_FAVORITE: "DELETE_FAVORITE",
   FETCH_WEATHER_PENDING: "FETCH_WEATHER_PENDING",
-  FETCH_WEATHER_SUCCESS: "FETCH_WEATHER_SUCCES",
+  FETCH_WEATHER_SUCCESS: "FETCH_WEATHER_SUCCESS",
   FETCH_WEATHER_ERROR: "FETCH_WEATHER_ERROR",
 });
 
@@ -27,7 +27,7 @@ export function fetchWeatherPending() {
   };
 }
 
-export function fetchWeatherSucces(weather) {
+export function fetchWeatherSuccess(weather) {
   return {
     type: Actions.FETCH_WEATHER_SUCCESS,
     payload: weather

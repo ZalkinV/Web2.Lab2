@@ -24,12 +24,17 @@ function reducer(state, action) {
       break;
 
     case Actions.FETCH_WEATHER_PENDING:
+      state.pending = true;
       break;
 
     case Actions.FETCH_WEATHER_SUCCESS:
+      state.pending = false;
+      state.weather = action.payload;
       break;
 
     case Actions.FETCH_WEATHER_ERROR:
+      state.pending = true;
+      state.error = action.payload;
       break;
 
     default:

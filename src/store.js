@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
+import thunk from "redux-thunk";
 
 import reducer from "./reducers";
 
@@ -19,7 +20,7 @@ const initialState = {
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(logger)
+  applyMiddleware(logger, thunk)
 );
 
 store.subscribe(() => {
