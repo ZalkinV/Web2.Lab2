@@ -2,7 +2,6 @@ import { Actions } from "./actions";
 
 
 function reducer(state, action) {
-  console.log("Reducer", action);
   state = {
     ...state,
     weather: {

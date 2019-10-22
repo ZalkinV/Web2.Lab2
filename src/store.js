@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 
 import reducer from "./reducers";
-import loggerMiddleware from "./middlewares";
 
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
 const store = createStore(
   reducer,
   initialState,
-  applyMiddleware(loggerMiddleware)
+  applyMiddleware(logger)
 );
 
 store.subscribe(() => {
