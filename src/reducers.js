@@ -23,6 +23,15 @@ function reducer(state, action) {
         state.favorites.splice(indexToDelete, 1);
       break;
 
+    case Actions.FETCH_WEATHER_PENDING:
+      break;
+
+    case Actions.FETCH_WEATHER_SUCCESS:
+      break;
+
+    case Actions.FETCH_WEATHER_ERROR:
+      break;
+
     default:
       break;
   }
