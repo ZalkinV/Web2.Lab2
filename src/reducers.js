@@ -13,7 +13,7 @@ function reducer(state, action) {
   switch (action.type) {
     case Actions.ADD_FAVORITE:
       let isAlreadyFavorite = state.favorites.includes(action.payload);
-      if (!isAlreadyFavorite)
+      if (!isAlreadyFavorite && action.payload !== undefined)
         state.favorites.push(action.payload);
       break;
     
