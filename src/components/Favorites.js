@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addFavorite, deleteFavorite } from "../actions";
 
 import AddFavorite from "./AddFavorite"
 import Weather from "./Weather";
-import { fetchWeatherByCityName } from "../middlewares";
+import { fetchWeatherByCityName } from "../middlewares"
+import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../actions";
 
 
 class Favorites extends React.Component {
@@ -52,7 +52,20 @@ function mapDispatchToProps(dispatch) {
     },
 
     fetchWeatherByCityName: (cityName) => {
-      dispatch(fetchWeatherByCityName(cityName));
+      dispatch(fetchWeatherPending());
+      let promise = fetchWeatherByCityName(cityName);
+
+      promise
+        .then(response => {
+          response.json().then(data => {
+            dispatch(fetchWeatherSuccess(data));
+            console.log(response, data);
+            dispatch(addFavorite(data.name))
+          });
+        })
+        .catch(error => {
+          dispatch(fetchWeatherError(error))
+        });
     }
   };
 }

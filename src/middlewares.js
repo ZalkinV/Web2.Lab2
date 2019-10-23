@@ -1,6 +1,3 @@
-import { fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess, addFavorite } from "./actions";
-
-
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_BASE_PARAMETERS = "&appid=7825ce4ffa896c5019e53087c858568a&units=metric&lang=en"
 
@@ -15,19 +12,5 @@ export function fetchWeatherByCoords(coords) {
 }
 
 function fetchWeather(url) {
-  return function(dispatch) {
-    dispatch(fetchWeatherPending());
-
-    fetch(url)
-      .then(response => {
-        response.json().then(data => {
-          dispatch(fetchWeatherSuccess(data));
-          console.log(response, data);
-          dispatch(addFavorite(data.name))
-        });
-      })
-      .catch(error => {
-        dispatch(fetchWeatherError(error))
-      });
-  }
+  return fetch(url);
 }
