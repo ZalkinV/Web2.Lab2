@@ -1,6 +1,7 @@
+import React from "react";
 
-export default function WeatherParam(props)
-{
+
+export default function WeatherParam(props) {
   return (
     <div>
       <div>props.name</div>

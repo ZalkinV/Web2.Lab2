@@ -4,9 +4,6 @@ import { Actions } from "./actions";
 function reducer(state, action) {
   state = {
     ...state,
-    weather: {
-      ...state.weather,
-    },
     favorites: [...state.favorites]
   };
 
@@ -33,7 +30,7 @@ function reducer(state, action) {
       break;
 
     case Actions.FETCH_WEATHER_ERROR:
-      state.pending = true;
+      state.pending = false;
       state.error = action.payload;
       break;
 
