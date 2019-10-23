@@ -1,4 +1,4 @@
-import { fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "./actions";
+import { fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess, addFavorite } from "./actions";
 
 
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -23,6 +23,7 @@ function fetchWeather(url) {
         response.json().then(data => {
           dispatch(fetchWeatherSuccess(data));
           console.log(response, data);
+          dispatch(addFavorite(data.name))
         });
       })
       .catch(error => {

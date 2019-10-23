@@ -29,9 +29,7 @@ class Favorites extends React.Component {
 
   handleAddFavorite(e) {
     e.preventDefault();
-    
     const cityName = e.currentTarget.elements.cityName.value;
-    this.props.addFavorite(cityName);
     this.props.fetchWeatherByCityName(cityName);
   }
 }
@@ -50,7 +48,7 @@ function mapDispatchToProps(dispatch) {
     },
 
     deleteFavorite: (cityName) => {
-     dispatch(deleteFavorite(cityName)); 
+      dispatch(deleteFavorite(cityName)); 
     },
 
     fetchWeatherByCityName: (cityName) => {
