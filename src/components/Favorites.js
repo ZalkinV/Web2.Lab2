@@ -53,19 +53,22 @@ function mapDispatchToProps(dispatch) {
 
     fetchWeatherByCityName: (cityName) => {
       dispatch(fetchWeatherPending());
+      
       let promise = fetchWeatherByCityName(cityName);
-
       promise
         .then(response => {
-          response.json().then(data => {
-            dispatch(fetchWeatherSuccess(data));
-            console.log(response, data);
-            dispatch(addFavorite(data.name))
-          });
-        })
-        .catch(error => {
-          dispatch(fetchWeatherError(error))
-        });
+          response.json()
+            .then(json => {
+              console.log(response, json);
+              if (!response.ok) {
+                dispatch(fetchWeatherError(json.message));
+              } else {
+                dispatch(fetchWeatherSuccess(json));
+                dispatch(addFavorite(json.name))
+              }
+            });
+        },
+        error => dispatch(fetchWeatherError(error)))
     }
   };
 }
