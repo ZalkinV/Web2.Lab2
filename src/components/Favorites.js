@@ -14,11 +14,11 @@ class Favorites extends React.Component {
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
         {
-          this.props.favorites.map((item) => {
+          this.props.favorites.map((forecast) => {
             return (
-              <div key={item}>
-                <Weather cityName={item} />
-                <button onClick={() => this.props.deleteFavorite(item)}>X</button>
+              <div key={forecast.cityName}>
+                <Weather forecast={forecast} />
+                <button onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
               </div>
             );
           })
@@ -43,10 +43,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addFavorite: (cityName) => {
-      dispatch(addFavorite(cityName));
-    },
-
     deleteFavorite: (cityName) => {
       dispatch(deleteFavorite(cityName)); 
     },
@@ -63,8 +59,8 @@ function mapDispatchToProps(dispatch) {
               if (!response.ok) {
                 dispatch(fetchWeatherError(json.message));
               } else {
-                dispatch(fetchWeatherSuccess(json));
-                dispatch(addFavorite(json.name))
+                dispatch(fetchWeatherSuccess());
+                dispatch(addFavorite(json))
               }
             });
         },

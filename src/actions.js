@@ -7,10 +7,10 @@ export const Actions = Object.freeze({
 });
 
 
-export function addFavorite(cityName) {
+export function addFavorite(forecast) {
   return {
     type: Actions.ADD_FAVORITE,
-    payload: cityName
+    payload: extractWeatherParams(forecast)
   };
 }
 
@@ -27,10 +27,9 @@ export function fetchWeatherPending() {
   };
 }
 
-export function fetchWeatherSuccess(weather) {
+export function fetchWeatherSuccess() {
   return {
     type: Actions.FETCH_WEATHER_SUCCESS,
-    payload: weather
   };
 }
 
@@ -39,4 +38,32 @@ export function fetchWeatherError(error) {
     type: Actions.FETCH_WEATHER_ERROR,
     payload: error
   };
+}
+
+
+function extractWeatherParams(forecast) {
+  const {
+    coord: coords,
+    weather: [{ icon, description }],
+    main: {
+      temp: temperature,
+      pressure,
+      humidity
+    },
+    wind: {
+      speed: windSpeed
+    },
+    name: cityName
+  } = forecast;
+
+  return {
+    cityName,
+    temperature,
+    pressure,
+    humidity,
+    windSpeed,
+    icon,
+    description,
+    coords
+  }
 }
