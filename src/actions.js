@@ -1,4 +1,5 @@
 export const Actions = Object.freeze({
+  SET_COORDS: "SET_COORDS",
   ADD_FAVORITE: "ADD_FAVORITE",
   DELETE_FAVORITE: "DELETE_FAVORITE",
   FETCH_WEATHER_PENDING: "FETCH_WEATHER_PENDING",
@@ -6,6 +7,13 @@ export const Actions = Object.freeze({
   FETCH_WEATHER_ERROR: "FETCH_WEATHER_ERROR",
 });
 
+
+export function setCoords(coords) {
+  return {
+    type: Actions.SET_COORDS,
+    payload: coords
+  };
+}
 
 export function addFavorite(forecast) {
   return {
