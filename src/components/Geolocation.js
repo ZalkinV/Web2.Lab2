@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchWeatherByCoords } from "../middlewares";
 import { setGeolocationWeather, fetchWeatherPending, fetchWeatherSuccess, fetchWeatherError } from "../actions";
-import Weather from "./Weather";
+import Weather from "./Weather/Weather";
 
 
 class Geolocation extends React.Component {

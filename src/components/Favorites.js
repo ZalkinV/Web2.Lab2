@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import AddFavorite from "./AddFavorite"
-import Weather from "./Weather";
+import Weather from "./Weather/Weather";
 import { fetchWeatherByCityName } from "../middlewares"
 import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../actions";
 
