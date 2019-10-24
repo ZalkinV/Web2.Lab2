@@ -8,8 +8,8 @@ function reducer(state, action) {
   };
 
   switch (action.type) {
-    case Actions.SET_COORDS:
-      state.coords = action.payload;
+    case Actions.SET_GEOLOCATION:
+      state.geolocation = action.payload;
       break;
 
     case Actions.ADD_FAVORITE:

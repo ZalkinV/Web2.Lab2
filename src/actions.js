@@ -1,5 +1,5 @@
 export const Actions = Object.freeze({
-  SET_COORDS: "SET_COORDS",
+  SET_GEOLOCATION: "SET_GEOLOCATION",
   ADD_FAVORITE: "ADD_FAVORITE",
   DELETE_FAVORITE: "DELETE_FAVORITE",
   FETCH_WEATHER_PENDING: "FETCH_WEATHER_PENDING",
@@ -8,11 +8,11 @@ export const Actions = Object.freeze({
 });
 
 
-export function setCoords(coords) {
+export function setGeolocationWeather(forecast) {
   return {
-    type: Actions.SET_COORDS,
-    payload: coords
-  };
+    type: Actions.SET_GEOLOCATION,
+    payload: extractWeatherParams(forecast)
+  }
 }
 
 export function addFavorite(forecast) {
