@@ -10,7 +10,7 @@ const LOCAL_STORAGE_KEY = "favorites";
 function getFavoritesFromStorage() {
   const localStorageContent = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   const favorites = Object.entries(localStorageContent).length !== 0 ? localStorageContent : [];
-  return new Map(favorites.map(cityName => [cityName, {}]));
+  return new Map(favorites.map(cityName => [cityName, {coords: {}}]));
 }
 
 

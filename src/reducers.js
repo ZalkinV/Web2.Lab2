@@ -13,8 +13,7 @@ function reducer(state, action) {
       break;
 
     case Actions.ADD_FAVORITE:
-      if (!state.favorites.has(action.payload.cityName))
-        state.favorites.set(action.payload.cityName, action.payload);
+      state.favorites.set(action.payload.cityName, action.payload);
       break;
     
     case Actions.DELETE_FAVORITE:

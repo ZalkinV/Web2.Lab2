@@ -8,6 +8,12 @@ import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fe
 
 
 class Favorites extends React.Component {
+  componentDidMount() {
+    this.props.favorites.forEach((forecast, cityName) => {
+      this.props.fetchWeatherByCityName(cityName);
+    });
+  }
+
   render() {
     return (
       <div>
