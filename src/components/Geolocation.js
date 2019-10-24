@@ -3,15 +3,21 @@ import { connect } from "react-redux";
 
 import { fetchWeatherByCoords } from "../middlewares";
 import { setGeolocationWeather, fetchWeatherPending, fetchWeatherSuccess, fetchWeatherError } from "../actions";
+import Weather from "./Weather";
 
 
 class Geolocation extends React.Component {
+  componentDidMount() {
+    this.props.fetchWeatherByCoords(this.props.forecast.coords);
+  }
+
   render() {
     return (
       <div>
         <button
           onClick={() => this.handleClick()}
         >Get geolocation</button>
+        <Weather forecast={this.props.forecast}/>
       </div>
     );
   }
@@ -28,7 +34,7 @@ class Geolocation extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    geolocation: state.geolocation
+    forecast: state.geolocation
   };
 }
 
