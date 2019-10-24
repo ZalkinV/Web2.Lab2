@@ -1,0 +1,16 @@
+.weather {
+  display: grid;
+  grid-template-rows: 2fr repeat(5, 1fr);
+  background-color: yellow;
+}
+
+.weather > .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header > .city-name {
+  font-size: 2em;
+  font-display: bold;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import Geolocation from "./Geolocation"
-import Favorites from "./Favorites";
+import Favorites from "./Favorites/Favorites";
 
 class App extends React.Component {
   render() {

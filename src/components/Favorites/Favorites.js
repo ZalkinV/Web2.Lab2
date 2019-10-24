@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import AddFavorite from "./AddFavorite"
-import Weather from "./Weather/Weather";
-import { fetchWeatherByCityName } from "../middlewares"
-import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../actions";
+import AddFavorite from "../AddFavorite"
+import Weather from "../Weather/Weather";
+import { fetchWeatherByCityName } from "../../middlewares"
+import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../../actions";
 
+import "./Favorites.css";
 
 class Favorites extends React.Component {
   componentDidMount() {
@@ -19,16 +20,18 @@ class Favorites extends React.Component {
       <div>
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
-        {
-          [...this.props.favorites.values()].map((forecast) => {
-            return (
-              <div key={forecast.cityName}>
-                <Weather forecast={forecast} />
-                <button onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
-              </div>
-            );
-          })
-        }
+        <div class="favorites">
+          {
+            [...this.props.favorites.values()].map((forecast) => {
+              return (
+                <div class="favorite" key={forecast.cityName}>
+                  <Weather forecast={forecast} />
+                  <button onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
+                </div>
+              );
+            })
+          }
+        </div>
       </div>
     );
   }
