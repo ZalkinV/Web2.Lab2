@@ -6,13 +6,11 @@ import reducer from "./reducers";
 
 
 const initialState = {
-  weather: {
-    cityName: undefined,
-    temp: undefined,
-    wind: undefined,
-    humidity: undefined,
-    pressure: undefined,
-    coords: undefined
+  geolocation: {
+    coords: {
+      lat: 43.02,
+      lon: 44.68
+    }
   },
   favorites: []
 };
