@@ -7,7 +7,6 @@ class App extends React.Component {
     return (
       <div>
         <Geolocation />
-        <h1>Hello, {this.props.name}</h1>
         <Favorites />
       </div>
     );
