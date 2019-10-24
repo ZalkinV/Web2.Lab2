@@ -12,7 +12,7 @@ const initialState = {
       lon: 44.68
     }
   },
-  favorites: []
+  favorites: new Map()
 };
 
 const store = createStore(
@@ -22,7 +22,6 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  console.log("Store was changed!", store.getState());
 });
 
 

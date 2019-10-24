@@ -14,7 +14,7 @@ class Favorites extends React.Component {
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
         {
-          this.props.favorites.map((forecast) => {
+          [...this.props.favorites.values()].map((forecast) => {
             return (
               <div key={forecast.cityName}>
                 <Weather forecast={forecast} />

@@ -4,7 +4,7 @@ import { Actions } from "./actions";
 function reducer(state, action) {
   state = {
     ...state,
-    favorites: [...state.favorites]
+    favorites: new Map(state.favorites)
   };
 
   switch (action.type) {
@@ -13,15 +13,12 @@ function reducer(state, action) {
       break;
 
     case Actions.ADD_FAVORITE:
-      const existedFavorite = state.favorites.find(elem => elem.cityName === action.payload.cityName);
-      if (existedFavorite === undefined)
-        state.favorites.push(action.payload);
+      if (!state.favorites.has(action.payload.cityName))
+        state.favorites.set(action.payload.cityName, action.payload);
       break;
     
     case Actions.DELETE_FAVORITE:
-      const indexToDelete = state.favorites.find(elem => elem.cityName === action.payload.cityName);
-      if (indexToDelete !== -1)
-        state.favorites.splice(indexToDelete, 1);
+      state.favorites.delete(action.payload);
       break;
 
     case Actions.FETCH_WEATHER_PENDING:
