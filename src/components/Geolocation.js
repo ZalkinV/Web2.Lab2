@@ -1,37 +1,59 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { fetchWeatherByCoords } from "../middlewares";
+import { setGeolocationWeather, fetchWeatherPending, fetchWeatherSuccess, fetchWeatherError } from "../actions";
+
 
 class Geolocation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state =
-    {
-      latitude: null,
-      longitude: null
-    };
-  }
-
   render() {
     return (
       <div>
         <button
           onClick={() => this.handleClick()}
         >Get geolocation</button>
-        <p>Position: {this.state.latitude}, {this.state.longitude} </p>
       </div>
     );
   }
 
   handleClick() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((p) => this.updateGeolocation(p.coords));
+      navigator.geolocation.getCurrentPosition((position) => this.props.fetchWeatherByCoords(position.coords));
     } else {
       alert("Your browser does not support geolocation!");
     }
   }
-
-  updateGeolocation(coords) {
-    this.setState({ latitude: coords.latitude, longitude: coords.longitude })
-  }
 }
 
-export default Geolocation;
+
+function mapStateToProps(state) {
+  return {
+    geolocation: state.geolocation
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchWeatherByCoords: (coords) => {
+      dispatch(fetchWeatherPending());
+      
+      let promise = fetchWeatherByCoords(coords);
+      promise
+        .then(response => {
+          response.json()
+            .then(json => {
+              console.log(response, json);
+              if (!response.ok) {
+                dispatch(fetchWeatherError(json.message));
+              } else {
+                dispatch(fetchWeatherSuccess());
+                dispatch(setGeolocationWeather(json))
+              }
+            });
+        },
+        error => dispatch(fetchWeatherError(error)))
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Geolocation);
