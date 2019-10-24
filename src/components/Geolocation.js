@@ -24,7 +24,13 @@ class Geolocation extends React.Component {
 
   handleClick() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => this.props.fetchWeatherByCoords(position.coords));
+      navigator.geolocation.getCurrentPosition(position => {
+        const coords = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        };
+        this.props.fetchWeatherByCoords(coords);
+      });
     } else {
       alert("Your browser does not support geolocation!");
     }
