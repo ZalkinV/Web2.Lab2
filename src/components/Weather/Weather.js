@@ -6,19 +6,35 @@ import "./Weather.css";
 
 
 export default function Weather(props) {
+  const {
+    forecast: {
+      cityName,
+      temperature,
+      icon,
+      windSpeed,
+      description,
+      pressure,
+      humidity,
+      coords: {
+        lat: latitude,
+        lon: longitude
+      } = {}
+    }
+  } = props;
+
   return (
     <div class="weather">
       <div class="header">
-        <div class="city-name">{props.forecast.cityName}</div>
-        <div class="temperature">{props.forecast.temperature} &#8451;</div>
-        <img src={getIconURL(props.forecast.icon)} alt="Weather icon" />
+        <div class="city-name">{cityName}</div>
+        <div class="temperature">{temperature} &#8451;</div>
+        <img src={getIconURL(icon)} alt="Weather icon" />
       </div>
 
-      <WeatherParam name="Wind" value={`${props.forecast.windSpeed} m/s`} />
-      <WeatherParam name="Cloudness" value={props.forecast.description} />
-      <WeatherParam name="Pressure" value={`${props.forecast.pressure} hPa`} />
-      <WeatherParam name="Humidity" value={`${props.forecast.humidity}%`} />
-      <WeatherParam name="Coords" value={`${props.forecast.coords.lat}, ${props.forecast.coords.lon}`} />
+      <WeatherParam name="Wind" value={`${windSpeed} m/s`} />
+      <WeatherParam name="Cloudness" value={description} />
+      <WeatherParam name="Pressure" value={`${pressure} hPa`} />
+      <WeatherParam name="Humidity" value={`${humidity}%`} />
+      <WeatherParam name="Coords" value={`${latitude}, ${longitude}`} />
     </div>
   );
 }
