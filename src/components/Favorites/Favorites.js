@@ -8,6 +8,7 @@ import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fe
 
 import "./Favorites.css";
 
+
 class Favorites extends React.Component {
   componentDidMount() {
     this.props.favorites.forEach((forecast, cityName) => {
@@ -20,6 +21,11 @@ class Favorites extends React.Component {
       <div class="favorites">
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
+        {this.props.pending && 
+          <>
+            <img src={"/loader.svg"} alt="loader" />
+            <p>Forecast is loading...</p>
+          </>}
         <div class="forecasts">
           {
             [...this.props.favorites.values()].map((forecast) => {
@@ -46,7 +52,8 @@ class Favorites extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    favorites: state.favorites
+    favorites: state.favorites,
+    pending: state.pending
   };
 }
 
