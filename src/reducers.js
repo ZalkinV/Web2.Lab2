@@ -22,16 +22,17 @@ function reducer(state, action) {
 
     case Actions.FETCH_WEATHER_PENDING:
       state.pending = true;
+      state.error = false;
       break;
 
     case Actions.FETCH_WEATHER_SUCCESS:
       state.pending = false;
+      state.error = false;
       break;
 
     case Actions.FETCH_WEATHER_ERROR:
       state.pending = false;
       state.error = action.payload;
-      alert(state.error);
       break;
 
     default:

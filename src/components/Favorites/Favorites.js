@@ -23,6 +23,7 @@ class Favorites extends React.Component {
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
         {this.props.pending && <Loader />}
+        {this.props.error && <div class="error">Error: {this.props.error}</div>}
         <div class="forecasts">
           {
             [...this.props.favorites.values()].map((forecast) => {
@@ -50,7 +51,8 @@ class Favorites extends React.Component {
 function mapStateToProps(state) {
   return {
     favorites: state.favorites,
-    pending: state.pending
+    pending: state.pending,
+    error: state.error
   };
 }
 

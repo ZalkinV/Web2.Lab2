@@ -4,6 +4,10 @@
   border: 2px solid orangered;
 }
 
+.weather > .error {
+  background-color: red;
+}
+
 .weather > .header {
   display: flex;
   align-items: center;
