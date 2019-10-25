@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
+import Loader from "../Loader/Loader";
 import { fetchWeatherByCityName } from "../../middlewares"
 import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../../actions";
 
@@ -21,11 +22,7 @@ class Favorites extends React.Component {
       <div class="favorites">
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
-        {this.props.pending && 
-          <>
-            <img src={"/loader.svg"} alt="loader" />
-            <p>Forecast is loading...</p>
-          </>}
+        {this.props.pending && <Loader />}
         <div class="forecasts">
           {
             [...this.props.favorites.values()].map((forecast) => {
