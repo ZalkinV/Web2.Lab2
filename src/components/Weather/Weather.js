@@ -10,7 +10,7 @@ export default function Weather(props) {
     <div class="weather">
       <div class="header">
         <div class="city-name">{props.forecast.cityName}</div>
-        <div>{props.forecast.temperature}</div>
+        <div class="temperature">{props.forecast.temperature} &#8451;</div>
         <img src={getIconURL(props.forecast.icon)} alt="Weather icon" />
       </div>
 

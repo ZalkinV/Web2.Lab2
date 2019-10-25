@@ -26,7 +26,7 @@ class Favorites extends React.Component {
               return (
                 <div class="favorite" key={forecast.cityName}>
                   <Weather forecast={forecast} />
-                  <button onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
+                  <button class="button" onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
                 </div>
               );
             })
