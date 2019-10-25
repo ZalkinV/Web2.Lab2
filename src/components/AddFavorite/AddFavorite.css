@@ -1,0 +1,7 @@
+.add-favorite {
+  display: inline;
+}
+
+.add-favorite > .input {
+  display: inline;
+}

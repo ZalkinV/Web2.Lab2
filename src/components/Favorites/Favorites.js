@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import AddFavorite from "../AddFavorite"
+import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
 import { fetchWeatherByCityName } from "../../middlewares"
 import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../../actions";
@@ -17,14 +17,14 @@ class Favorites extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="favorites">
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
-        <div class="favorites">
+        <div class="forecasts">
           {
             [...this.props.favorites.values()].map((forecast) => {
               return (
-                <div class="favorite" key={forecast.cityName}>
+                <div class="forecast" key={forecast.cityName}>
                   <Weather forecast={forecast} />
                   <button class="button" onClick={() => this.props.deleteFavorite(forecast.cityName)}>X</button>
                 </div>
