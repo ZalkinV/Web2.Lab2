@@ -31,6 +31,7 @@ function reducer(state, action) {
     case Actions.FETCH_WEATHER_ERROR:
       state.pending = false;
       state.error = action.payload;
+      alert(state.error);
       break;
 
     default:
