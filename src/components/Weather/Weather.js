@@ -19,7 +19,8 @@ export default function Weather(props) {
         lat: latitude,
         lon: longitude
       } = {}
-    }
+    },
+    onDelete
   } = props;
 
   return (
@@ -35,6 +36,8 @@ export default function Weather(props) {
       <WeatherParam name="Pressure" value={`${pressure} hPa`} />
       <WeatherParam name="Humidity" value={`${humidity}%`} />
       <WeatherParam name="Coords" value={`${latitude}, ${longitude}`} />
+
+      {onDelete && <button class="button" onClick={onDelete}>X</button>}
     </div>
   );
 }
