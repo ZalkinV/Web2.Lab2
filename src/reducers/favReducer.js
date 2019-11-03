@@ -14,7 +14,8 @@ export default function favReducer(state = initialState, action) {
 
   switch (action.type) {
     case Actions.ADD_FAVORITE:
-      state.favorites.set(action.payload);
+      if (!state.favorites.has(action.payload))
+        state.favorites.set(action.payload);
       break;
 
     case Actions.DELETE_FAVORITE:
