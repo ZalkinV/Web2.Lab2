@@ -2,8 +2,11 @@ import { Actions } from "../actions/favActions";
 import getFavoritesFromStorage from "../localStorage";
 import { extractWeatherParams } from "../middlewares";
 
+const initialState = {
+  favorites: getFavoritesFromStorage()
+};
 
-export default function favReducer(state = getFavoritesFromStorage(), action) {
+export default function favReducer(state = initialState, action) {
   state = {
     ...state,
     favorites: new Map(state.favorites)
