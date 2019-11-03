@@ -32,26 +32,32 @@ export function fetchWeatherByCityName(cityName) {
           .then(json => {
             console.log(response, json);
             if (!response.ok) {
-              dispatch(fetchFavError(json.message));
+              dispatch(fetchFavError(json.message, cityName));
             } else {
-              dispatch(fetchFavSuccess(json));
+              dispatch(fetchFavSuccess(json, cityName));
             }
           });
       },
-      error => dispatch(fetchFavError(error)))
+      error => dispatch(fetchFavError(error, cityName)))
   }
 }
 
-function fetchFavSuccess(apiResponse) {
+function fetchFavSuccess(apiResponse, cityName) {
   return {
     type: Actions.FETCH_FAV_SUCCESS,
-    payload: apiResponse
+    payload: {
+      apiResponse,
+      cityName
+    }
   }
 }
 
-function fetchFavError(error) {
+function fetchFavError(error, cityName) {
   return {
     type: Actions.FETCH_FAV_ERROR,
-    payload: error
+    payload: {
+      error,
+      cityName
+    }
   }
 }

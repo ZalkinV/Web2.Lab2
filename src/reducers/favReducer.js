@@ -25,12 +25,14 @@ export default function favReducer(state = initialState, action) {
       break;
 
     case Actions.FETCH_FAV_SUCCESS:
-      const forecast = extractWeatherParams(action.payload);
+      const forecast = extractWeatherParams(action.payload.apiResponse);
+      state.favorites.delete(action.payload.cityName);
       state.favorites.set(forecast.cityName, forecast);
       break;
 
     case Actions.FETCH_FAV_ERROR:
-      state.error = action.payload;
+      state.error = action.payload.error;
+      state.favorites.delete(action.payload.cityName);
       break;
 
     default:
