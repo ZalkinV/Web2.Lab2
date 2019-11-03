@@ -2,18 +2,11 @@ import { Actions } from "../actions/geoActions";
 import { extractWeatherParams } from "../api";
 
 
-const initialState = {
-  coords: {
-    lat: 43.02,
-    lon: 44.68
-  }
-}
-
-export default function geoReducer(state = initialState, action) {
+export default function geoReducer(state, action) {
   state = {
     ...state,
     error: false
-  }
+  };
 
   switch (action.type) {
     case Actions.SET_GEOLOCATION:

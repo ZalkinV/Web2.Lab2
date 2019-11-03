@@ -11,7 +11,7 @@ export default function favReducer(state = initialState, action) {
     ...state,
     error: false,
     favorites: new Map(state.favorites)
-  }
+  };
 
   switch (action.type) {
     case Actions.ADD_FAVORITE:
