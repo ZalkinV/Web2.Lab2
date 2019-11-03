@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getIconURL } from "../../middlewares";
+import { getIconURL } from "../../api";
 import WeatherParam from "../WeatherParam/WeatherParam";
 
 import "./Weather.css";

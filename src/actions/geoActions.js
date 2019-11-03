@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_BASE_PARAMETERS} from "../middlewares";
+import { API_BASE_URL, API_BASE_PARAMETERS } from "../api";
 
 export const Actions = {
   SET_GEOLOCATION: "SET_GEOLOCATION",

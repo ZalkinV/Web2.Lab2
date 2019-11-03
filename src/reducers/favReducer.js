@@ -1,6 +1,6 @@
 import { Actions } from "../actions/favActions";
 import getFavoritesFromStorage from "../localStorage";
-import { extractWeatherParams } from "../middlewares";
+import { extractWeatherParams } from "../api";
 
 const initialState = {
   favorites: getFavoritesFromStorage()

@@ -1,5 +1,5 @@
 import { Actions } from "../actions/geoActions";
-import { extractWeatherParams } from "../middlewares";
+import { extractWeatherParams } from "../api";
 
 
 const initialState = {
