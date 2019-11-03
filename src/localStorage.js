@@ -5,5 +5,5 @@ export default function getFavoritesFromStorage(key = LOCAL_STORAGE_KEY) {
   let favorites = [];
   if (localStorageContent !== null && Array.isArray(localStorageContent))
     favorites = localStorageContent;
-  return new Map(favorites.map(cityName => [cityName, {}]));
+  return new Map(favorites.map(cityName => [cityName, undefined]));
 }
