@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
-import Loader from "../Loader/Loader";
 import { addFavorite, deleteFavorite, fetchWeatherByCityName } from "../../actions/favActions";
 
 import "./Favorites.css";
