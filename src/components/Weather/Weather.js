@@ -8,24 +8,16 @@ import Loader from "../Loader/Loader";
 
 
 export default class Weather extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true
-    };
-  }
-
   componentDidMount() {
-    this.setState({isLoading: true});
     this.props.onFetch();
   }
 
   render() {
-    if (this.state.isLoading) {
+    if (!this.props.forecast) {
       return this.renderLoader();
-    } else {
-      return this.renderWeather();
     }
+
+    return this.renderWeather();
   }
 
   renderLoader() {

@@ -17,12 +17,13 @@ class Favorites extends React.Component {
         {this.props.error && <div class="error">Error: {this.props.error}</div>}
         <div class="forecasts">
           {
-            [...this.props.favorites.keys()].map((cityName) => {
+            [...this.props.favorites.entries()].map((entry) => {
               return (
                 <Weather
-                  key={cityName}
-                  onFetch={() => this.props.fetchWeatherByCityName(cityName)}
-                  onDelete={() => this.props.deleteFavorite(cityName)} />
+                  key={entry[0]}
+                  onFetch={() => this.props.fetchWeatherByCityName(entry[0])}
+                  onDelete={() => this.props.deleteFavorite(entry[0])}
+                  forecast={entry[1]} />
               );
             })
           }
