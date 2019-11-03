@@ -3,12 +3,10 @@ import { extractWeatherParams } from "../middlewares";
 
 
 const initialState = {
-  geolocation: {
-    coords: {
-      lat: 43.02,
-      lon: 44.68
-    }
-  },
+  coords: {
+    lat: 43.02,
+    lon: 44.68
+  }
 }
 
 export default function geoReducer(state = initialState, action) {
@@ -18,15 +16,17 @@ export default function geoReducer(state = initialState, action) {
 
   switch (action.type) {
     case Actions.SET_GEOLOCATION:
-      state.geolocation.coords = action.payload;
+      state.error = false;
+      state.coords = action.payload;
       break;
     
     case Actions.FETCH_GEO_SUCCESS:
-      state.geolocation = extractWeatherParams(action.payload);
+      state.error = false;
+      state.forecast = extractWeatherParams(action.payload);
       break;
 
     case Actions.FETCH_GEO_ERROR:
-      state.geolocation.error = action.payload;
+      state.error = action.payload;
       break;
 
     default:

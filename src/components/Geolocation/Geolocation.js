@@ -30,6 +30,8 @@ class Geolocation extends React.Component {
           lon: position.coords.longitude
         };
         this.props.setGeolocation(coords);
+
+        this.props.fetchWeatherByCoords(coords);
       });
     } else {
       alert("Your browser does not support geolocation!");
@@ -40,8 +42,8 @@ class Geolocation extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    coords: state.geo.geolocation.coords,
-    forecast: state.geo.geolocation.forecast
+    coords: state.geo.coords,
+    forecast: state.geo.forecast
   };
 }
 
