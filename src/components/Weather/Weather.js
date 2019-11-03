@@ -4,15 +4,27 @@ import { getIconURL } from "../../middlewares";
 import WeatherParam from "../WeatherParam/WeatherParam";
 
 import "./Weather.css";
+import Loader from "../Loader/Loader";
 
 
 export default class Weather extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
+
   componentDidMount() {
-    this.state.setState({isLoading: true});
-    this.props.fetchForecast();
+    this.setState({isLoading: true});
+    debugger;
+    this.props.onFetch();
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (<Loader />);
+    } else {
     const {
       forecast: {
         cityName,
@@ -47,4 +59,5 @@ export default class Weather extends React.Component {
         {onDelete && <button class="button" onClick={onDelete}>X</button>}
       </div>
     );}
+  }
 }

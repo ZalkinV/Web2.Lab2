@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
 import Loader from "../Loader/Loader";
-import { fetchWeatherByCityName } from "../../middlewares"
-import { addFavorite, deleteFavorite } from "../../actions/favActions";
+import { addFavorite, deleteFavorite, fetchWeatherByCityName } from "../../actions/favActions";
 
 import "./Favorites.css";
 
@@ -21,7 +20,10 @@ class Favorites extends React.Component {
           {
             [...this.props.favorites.keys()].map((cityName) => {
               return (
-                <Weather key={cityName} onDelete={() => this.props.deleteFavorite(cityName)} />
+                <Weather
+                  key={cityName}
+                  onFetch={() => this.props.fetchWeatherByCityName(cityName)}
+                  onDelete={() => this.props.deleteFavorite(cityName)} />
               );
             })
           }
@@ -53,6 +55,10 @@ function mapDispatchToProps(dispatch) {
 
     deleteFavorite: (cityName) => {
       dispatch(deleteFavorite(cityName)); 
+    },
+
+    fetchWeatherByCityName: (cityName) => {
+      dispatch(fetchWeatherByCityName(cityName));
     }
   };
 }

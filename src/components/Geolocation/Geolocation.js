@@ -15,7 +15,7 @@ class Geolocation extends React.Component {
         <button class="button"
           onClick={() => this.handleClick()}
         >Get geolocation</button>
-        <Weather forecast={this.props.forecast}/>
+        <Weather onFetch={() => this.props.fetchWeatherByCoords}/>
       </div>
     );
   }
@@ -50,7 +50,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(setGeolocation(coords));
     },
 
-    fetchForecast: (coords) => {
+    fetchWeatherByCoords: (coords) => {
       dispatch(fetchWeatherByCoords(coords));
     }
   };

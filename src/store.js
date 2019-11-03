@@ -13,7 +13,7 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...store.getState().favorites.keys()]));
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...store.getState().fav.favorites.keys()]));
 });
 
 
