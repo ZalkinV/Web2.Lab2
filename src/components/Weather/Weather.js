@@ -17,14 +17,22 @@ export default class Weather extends React.Component {
 
   componentDidMount() {
     this.setState({isLoading: true});
-    debugger;
     this.props.onFetch();
   }
 
   render() {
     if (this.state.isLoading) {
-      return (<Loader />);
+      return this.renderLoader();
     } else {
+      return this.renderWeather();
+    }
+  }
+
+  renderLoader() {
+    return <Loader />
+  }
+
+  renderWeather() {
     const {
       forecast: {
         cityName,
@@ -58,6 +66,6 @@ export default class Weather extends React.Component {
 
         {onDelete && <button class="button" onClick={onDelete}>X</button>}
       </div>
-    );}
+    );
   }
 }
