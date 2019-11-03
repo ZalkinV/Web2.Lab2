@@ -43,10 +43,10 @@ export default class Weather extends React.Component {
     } = this.props;
 
     return (
-      <div class="weather">
-        <div class="header">
-          <div class="city-name">{cityName}</div>
-          <div class="temperature">{temperature} &#8451;</div>
+      <div className="weather">
+        <div className="header">
+          <div className="city-name">{cityName}</div>
+          <div className="temperature">{temperature} &#8451;</div>
           <img src={getIconURL(icon)} alt="Weather icon" />
         </div>
 
@@ -56,7 +56,7 @@ export default class Weather extends React.Component {
         <WeatherParam name="Humidity" value={`${humidity}%`} />
         <WeatherParam name="Coords" value={`${latitude}, ${longitude}`} />
 
-        {onDelete && <button class="button" onClick={onDelete}>X</button>}
+        {onDelete && <button className="button" onClick={onDelete}>X</button>}
       </div>
     );
   }

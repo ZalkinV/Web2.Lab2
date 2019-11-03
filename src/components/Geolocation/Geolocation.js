@@ -10,9 +10,9 @@ import "./Geolocation.css";
 class Geolocation extends React.Component {
   render() {
     return (
-      <div class="geolocation">
-        <h1 class="header">Refresh geolocation</h1>
-        <button class="button"
+      <div className="geolocation">
+        <h1 className="header">Refresh geolocation</h1>
+        <button className="button"
           onClick={() => this.handleClick()}
         >Get geolocation</button>
         <Weather

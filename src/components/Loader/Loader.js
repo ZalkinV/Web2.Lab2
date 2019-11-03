@@ -5,7 +5,7 @@ import "./Loader.css";
 
 export default function Loader(props) {
   return (
-    <div class="loader">
+    <div className="loader">
       <img src={"/loader.svg"} alt="loader" />
       <p>Forecast is loading...</p>
     </div>

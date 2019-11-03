@@ -11,11 +11,11 @@ import "./Favorites.css";
 class Favorites extends React.Component {
   render() {
     return (
-      <div class="favorites">
+      <div className="favorites">
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
-        {this.props.error && <div class="error">Error: {this.props.error}</div>}
-        <div class="forecasts">
+        {this.props.error && <div className="error">Error: {this.props.error}</div>}
+        <div className="forecasts">
           {
             [...this.props.favorites.entries()].map((entry) => {
               return (
