@@ -40,7 +40,7 @@ function fetchGeoSuccess(apiResponse) {
   }
 }
 
-function fetchGeoError(error) {
+export function fetchGeoError(error) {
   return {
     type: Actions.FETCH_GEO_ERROR,
     payload: error

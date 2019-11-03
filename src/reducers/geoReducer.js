@@ -11,17 +11,16 @@ const initialState = {
 
 export default function geoReducer(state = initialState, action) {
   state = {
-    ...state
+    ...state,
+    error: false
   }
 
   switch (action.type) {
     case Actions.SET_GEOLOCATION:
-      state.error = false;
       state.coords = action.payload;
       break;
     
     case Actions.FETCH_GEO_SUCCESS:
-      state.error = false;
       state.forecast = extractWeatherParams(action.payload);
       break;
 

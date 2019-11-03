@@ -9,18 +9,17 @@ const initialState = {
 export default function favReducer(state = initialState, action) {
   state = {
     ...state,
+    error: false,
     favorites: new Map(state.favorites)
   }
 
   switch (action.type) {
     case Actions.ADD_FAVORITE:
-      state.error = false;
       if (!state.favorites.has(action.payload))
         state.favorites.set(action.payload);
       break;
 
     case Actions.DELETE_FAVORITE:
-      state.error = false;
       state.favorites.delete(action.payload);
       break;
 

@@ -1,13 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setGeolocation, fetchWeatherByCoords } from "../../actions/geoActions";
+import { setGeolocation, fetchWeatherByCoords, fetchGeoError } from "../../actions/geoActions";
 import Weather from "../Weather/Weather";
 
 import "./Geolocation.css";
 
 
 class Geolocation extends React.Component {
+  componentDidMount() {
+    this.getGeolocation();
+  }
+
   render() {
     return (
       <div className="geolocation">
@@ -15,14 +19,22 @@ class Geolocation extends React.Component {
         <button className="button"
           onClick={() => this.handleClick()}
         >Get geolocation</button>
-        <Weather
-          onFetch={() => this.props.fetchWeatherByCoords(this.props.coords)}
-          forecast={this.props.forecast}/>
+        {!this.props.error ? (
+          <Weather
+            onFetch={() => this.props.fetchWeatherByCoords(this.props.coords)}
+            forecast={this.props.forecast}/>
+        ) : (
+          <div className="error">Error: {this.props.error}</div>
+          )}
       </div>
     );
   }
 
   handleClick() {
+    this.getGeolocation();
+  }
+
+  getGeolocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         const coords = {
@@ -32,10 +44,11 @@ class Geolocation extends React.Component {
         this.props.setGeolocation(coords);
 
         this.props.fetchWeatherByCoords(coords);
-      });
+      },
+      this.props.fetchGeoError("cannot get geolocation"));
     } else {
-      alert("Your browser does not support geolocation!");
-    }
+      this.props.fetchGeoError("your browser does not support geolocation");
+    } 
   }
 }
 
@@ -43,7 +56,8 @@ class Geolocation extends React.Component {
 function mapStateToProps(state) {
   return {
     coords: state.geo.coords,
-    forecast: state.geo.forecast
+    forecast: state.geo.forecast,
+    error: state.geo.error
   };
 }
 
@@ -55,6 +69,10 @@ function mapDispatchToProps(dispatch) {
 
     fetchWeatherByCoords: (coords) => {
       dispatch(fetchWeatherByCoords(coords));
+    },
+
+    fetchGeoError: (error) => {
+      dispatch(fetchGeoError(error));
     }
   };
 }
