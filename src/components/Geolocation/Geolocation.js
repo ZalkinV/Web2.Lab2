@@ -1,18 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchWeatherByCoords } from "../../middlewares";
-import { setGeolocationWeather, fetchWeatherPending, fetchWeatherSuccess, fetchWeatherError } from "../../actions";
+import { setGeolocation, fetchWeatherByCoords } from "../../actions/geoActions";
 import Weather from "../Weather/Weather";
 
 import "./Geolocation.css";
 
 
 class Geolocation extends React.Component {
-  componentDidMount() {
-    this.props.fetchWeatherByCoords(this.props.forecast.coords);
-  }
-
   render() {
     return (
       <div class="geolocation">
@@ -32,8 +27,10 @@ class Geolocation extends React.Component {
           lat: position.coords.latitude,
           lon: position.coords.longitude
         };
-        this.props.fetchWeatherByCoords(coords);
+        this.props.setGeolocation(coords);
       });
+
+      this.props.fetchWeatherByCoords(this.props.geolocation.coords);
     } else {
       alert("Your browser does not support geolocation!");
     }
@@ -43,30 +40,18 @@ class Geolocation extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    forecast: state.geolocation
+    forecast: state.geo.geolocation
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchWeatherByCoords: (coords) => {
-      dispatch(fetchWeatherPending());
-      
-      let promise = fetchWeatherByCoords(coords);
-      promise
-        .then(response => {
-          response.json()
-            .then(json => {
-              console.log(response, json);
-              if (!response.ok) {
-                dispatch(fetchWeatherError(json.message));
-              } else {
-                dispatch(fetchWeatherSuccess());
-                dispatch(setGeolocationWeather(json))
-              }
-            });
-        },
-        error => dispatch(fetchWeatherError(error)))
+    setGeolocation: (coords) => {
+      dispatch(setGeolocation(coords));
+    },
+
+    fetchForecast: (coords) => {
+      dispatch(fetchWeatherByCoords(coords));
     }
   };
 }

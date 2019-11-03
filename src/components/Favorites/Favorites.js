@@ -5,30 +5,23 @@ import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
 import Loader from "../Loader/Loader";
 import { fetchWeatherByCityName } from "../../middlewares"
-import { addFavorite, deleteFavorite, fetchWeatherPending, fetchWeatherError, fetchWeatherSuccess } from "../../actions";
+import { addFavorite, deleteFavorite } from "../../actions/favActions";
 
 import "./Favorites.css";
 
 
 class Favorites extends React.Component {
-  componentDidMount() {
-    this.props.favorites.forEach((forecast, cityName) => {
-      this.props.fetchWeatherByCityName(cityName);
-    });
-  }
-
   render() {
     return (
       <div class="favorites">
         <h1>Favorites</h1>
         <AddFavorite onSubmit={(e) => this.handleAddFavorite(e)} />
-        {this.props.pending && <Loader />}
         {this.props.error && <div class="error">Error: {this.props.error}</div>}
         <div class="forecasts">
           {
-            [...this.props.favorites.values()].map((forecast) => {
+            [...this.props.favorites.keys()].map((cityName) => {
               return (
-                <Weather key={forecast.cityName} forecast={forecast} onDelete={() => this.props.deleteFavorite(forecast.cityName)} />
+                <Weather key={cityName} onDelete={() => this.props.deleteFavorite(cityName)} />
               );
             })
           }
@@ -40,43 +33,26 @@ class Favorites extends React.Component {
   handleAddFavorite(e) {
     e.preventDefault();
     const cityName = e.currentTarget.elements.cityName.value;
-    this.props.fetchWeatherByCityName(cityName);
+    this.props.addFavorite(cityName);
   }
 }
 
 
 function mapStateToProps(state) {
   return {
-    favorites: state.favorites,
-    pending: state.pending,
-    error: state.error
+    favorites: state.fav.favorites,
+    error: state.fav.error
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    deleteFavorite: (cityName) => {
-      dispatch(deleteFavorite(cityName)); 
+    addFavorite: (cityName) => {
+      dispatch(addFavorite(cityName));
     },
 
-    fetchWeatherByCityName: (cityName) => {
-      dispatch(fetchWeatherPending());
-      
-      let promise = fetchWeatherByCityName(cityName);
-      promise
-        .then(response => {
-          response.json()
-            .then(json => {
-              console.log(response, json);
-              if (!response.ok) {
-                dispatch(fetchWeatherError(json.message));
-              } else {
-                dispatch(fetchWeatherSuccess());
-                dispatch(addFavorite(json))
-              }
-            });
-        },
-        error => dispatch(fetchWeatherError(error)))
+    deleteFavorite: (cityName) => {
+      dispatch(deleteFavorite(cityName)); 
     }
   };
 }
