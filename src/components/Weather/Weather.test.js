@@ -32,5 +32,17 @@ describe("<Weather /> render", () => {
     
     expect(tree).toMatchSnapshot();
   });
+  
+  test("should has forecast and no delete button", () => {
+    const tree = renderer
+      .create(
+        <Weather
+          onFetch={() => {}}
+          forecast={DEFAULT_FORECAST}
+        />)
+      .toJSON();
+    
+    expect(tree).toMatchSnapshot();
+  });
 
 });
