@@ -56,4 +56,16 @@ describe("<Weather /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has <Loader /> even if onDelete given", () => {
+    const tree = renderer
+      .create(
+        <Weather
+          onFetch={() => {}}
+          onDelete={() => {}}
+        />)
+      .toJSON();
+    
+    expect(tree).toMatchSnapshot();
+  });
+
 });

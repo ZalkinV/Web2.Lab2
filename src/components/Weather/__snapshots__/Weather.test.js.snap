@@ -14,6 +14,20 @@ exports[`<Weather /> render should has <Loader /> 1`] = `
 </div>
 `;
 
+exports[`<Weather /> render should has <Loader /> even if onDelete given 1`] = `
+<div
+  className="loader"
+>
+  <img
+    alt="loader"
+    src="/loader.svg"
+  />
+  <p>
+    Forecast is loading...
+  </p>
+</div>
+`;
+
 exports[`<Weather /> render should has forecast and delete button 1`] = `
 <div
   className="weather"
