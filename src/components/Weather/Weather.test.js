@@ -45,4 +45,15 @@ describe("<Weather /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has <Loader />", () => {
+    const tree = renderer
+      .create(
+        <Weather
+          onFetch={() => {}}
+        />)
+      .toJSON();
+    
+    expect(tree).toMatchSnapshot();
+  });
+
 });
