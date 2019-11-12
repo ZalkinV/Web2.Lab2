@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> render should has loader image and text 1`] = `
+<div
+  className="loader"
+>
+  <img
+    alt="loader"
+    src="/loader.svg"
+  />
+  <p>
+    Forecast is loading...
+  </p>
+</div>
+`;
