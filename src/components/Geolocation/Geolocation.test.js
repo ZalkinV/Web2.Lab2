@@ -49,4 +49,24 @@ describe("<Geolocation /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has coords and forecast", () => {
+    const store = storeCreator({
+      geo: {
+        coords: DEFAULT_COORDS,
+        forecast: DEFAULT_FORECAST
+      }
+    });
+
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Geolocation
+            onFetch={() => {}}
+          />
+        </Provider>)
+      .toJSON();
+
+      expect(tree).toMatchSnapshot();
+  });
+
 });
