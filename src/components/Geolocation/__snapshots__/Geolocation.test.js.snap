@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Geolocation /> render should has only coords 1`] = `
+<div
+  className="geolocation"
+>
+  <h1
+    className="header"
+  >
+    Refresh geolocation
+  </h1>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    Get geolocation
+  </button>
+</div>
+`;
