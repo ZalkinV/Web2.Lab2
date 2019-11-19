@@ -29,18 +29,13 @@ describe("<Geolocation /> render", () => {
 
   const storeCreator = configureStore();
 
-  const DEFAULT_STORE = storeCreator({
-    geo: {}
-  });
-
 
   test("should has only coords", () => {
-    const store = {
-      ...DEFAULT_STORE,
+    const store = storeCreator({
       geo: {
         coords: DEFAULT_COORDS
       }
-    };
+    });
 
     const tree = renderer
       .create(
