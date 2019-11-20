@@ -51,9 +51,7 @@ describe("<Geolocation /> render", () => {
     const tree = renderer
       .create(
         <Provider store={store}>
-          <Geolocation
-            onFetch={() => {}}
-          />
+          <Geolocation />
         </Provider>)
       .toJSON();
 
@@ -71,9 +69,7 @@ describe("<Geolocation /> render", () => {
     const tree = renderer
       .create(
         <Provider store={store}>
-          <Geolocation
-            onFetch={() => {}}
-          />
+          <Geolocation />
         </Provider>)
       .toJSON();
 
