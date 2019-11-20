@@ -111,6 +111,30 @@ exports[`<Geolocation /> render should has coords and forecast 1`] = `
 </div>
 `;
 
+exports[`<Geolocation /> render should has error 1`] = `
+<div
+  className="geolocation"
+>
+  <h1
+    className="header"
+  >
+    Refresh geolocation
+  </h1>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    Get geolocation
+  </button>
+  <div
+    className="error"
+  >
+    Error: 
+    test error message
+  </div>
+</div>
+`;
+
 exports[`<Geolocation /> render should has only coords 1`] = `
 <div
   className="geolocation"

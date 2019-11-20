@@ -80,4 +80,22 @@ describe("<Geolocation /> render", () => {
       expect(tree).toMatchSnapshot();
   });
 
+  test("should has error", () => {
+    const store = storeCreator({
+      geo: {
+        error: "test error message"
+      }
+    });
+
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Geolocation />
+        </Provider>
+      )
+      .toJSON();
+
+      expect(tree).toMatchSnapshot();
+  });
+
 });
