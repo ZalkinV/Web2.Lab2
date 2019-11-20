@@ -30,6 +30,16 @@ describe("<Geolocation /> render", () => {
 
   const storeCreator = configureStore([thunk]);
 
+  beforeAll(() => {
+    global.fetch = jest.fn(() => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve("fake success response")}
+      ))
+  });
+
+  afterAll(() => {
+    delete global.fetch;
+  });
 
   test("should has only coords", () => {
     const store = storeCreator({
