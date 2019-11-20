@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Favorites /> render should has error 1`] = `
+<div
+  className="favorites"
+>
+  <h1>
+    Favorites
+  </h1>
+  <form
+    className="add-favorite"
+    onSubmit={[Function]}
+  >
+    <input
+      className="input"
+      name="cityName"
+      placeholder="City name"
+      required={true}
+      type="text"
+    />
+    <input
+      className="button"
+      type="submit"
+      value="Add to favorite"
+    />
+  </form>
+  <div
+    className="error"
+  >
+    Error: 
+    test error message
+  </div>
+  <div
+    className="forecasts"
+  />
+</div>
+`;
