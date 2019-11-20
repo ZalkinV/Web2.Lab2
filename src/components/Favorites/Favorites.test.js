@@ -41,4 +41,22 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has empty favorites", () => {
+    const store = storeCreator({
+      fav: {
+        favorites: new Map()
+      }
+    });
+
+    const tree = renderer
+    .create(
+      <Provider store={store}>
+        <Favorites />
+      </Provider>
+    )
+    .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
 });
