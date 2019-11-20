@@ -55,6 +55,25 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has error and favorites with 1 element", () => {
+    const store = storeCreator({
+      fav: {
+        error: "test error message",
+        favorites: new Map([["firstCity", DEFAULT_FORECAST]])
+      }
+    });
+
+    const tree = renderer
+    .create(
+      <Provider store={store}>
+        <Favorites />
+      </Provider>
+    )
+    .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   test("should has empty favorites", () => {
     const store = storeCreator({
       fav: {
