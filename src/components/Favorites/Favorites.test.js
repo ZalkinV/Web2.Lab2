@@ -110,4 +110,24 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has favorites with 2 element", () => {
+    const store = storeCreator({
+      fav: {
+        favorites: new Map([
+          ["firstCity", DEFAULT_FORECAST],
+          ["secondCity", DEFAULT_FORECAST]])
+      }
+    });
+
+    const tree = renderer
+    .create(
+      <Provider store={store}>
+        <Favorites />
+      </Provider>
+    )
+    .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
 });
