@@ -30,7 +30,7 @@ exports[`<Favorites /> render should has empty favorites 1`] = `
 </div>
 `;
 
-exports[`<Favorites /> render should has error 1`] = `
+exports[`<Favorites /> render should has error and empty favorites 1`] = `
 <div
   className="favorites"
 >

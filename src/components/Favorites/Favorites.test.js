@@ -36,7 +36,7 @@ describe("<Favorites /> render", () => {
     delete global.fetch;
   });
 
-  test("should has error", () => {
+  test("should has error and empty favorites", () => {
     const store = storeCreator({
       fav: {
         error: "test error message",
