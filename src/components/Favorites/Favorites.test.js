@@ -55,6 +55,24 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("should has favorites with 1 loading element", () => {
+    const store = storeCreator({
+      fav: {
+        favorites: new Map([["firstLoadingCity", undefined]])
+      }
+    });
+
+    const tree = renderer
+    .create(
+      <Provider store={store}>
+        <Favorites />
+      </Provider>
+    )
+    .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   test("should has error and favorites with 1 element", () => {
     const store = storeCreator({
       fav: {

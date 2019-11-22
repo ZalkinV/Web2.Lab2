@@ -332,6 +332,48 @@ exports[`<Favorites /> render should has favorites with 1 element 1`] = `
 </div>
 `;
 
+exports[`<Favorites /> render should has favorites with 1 loading element 1`] = `
+<div
+  className="favorites"
+>
+  <h1>
+    Favorites
+  </h1>
+  <form
+    className="add-favorite"
+    onSubmit={[Function]}
+  >
+    <input
+      className="input"
+      name="cityName"
+      placeholder="City name"
+      required={true}
+      type="text"
+    />
+    <input
+      className="button"
+      type="submit"
+      value="Add to favorite"
+    />
+  </form>
+  <div
+    className="forecasts"
+  >
+    <div
+      className="loader"
+    >
+      <img
+        alt="loader"
+        src="/loader.svg"
+      />
+      <p>
+        Forecast is loading...
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Favorites /> render should has favorites with 2 element 1`] = `
 <div
   className="favorites"
