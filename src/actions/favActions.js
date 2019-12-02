@@ -30,7 +30,6 @@ export function fetchWeatherByCityName(cityName) {
       .then(response => {
         response.json()
           .then(json => {
-            console.log(response, json);
             if (!response.ok) {
               dispatch(fetchFavError(json.message, cityName));
             } else {

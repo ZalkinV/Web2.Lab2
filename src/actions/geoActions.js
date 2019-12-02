@@ -21,7 +21,6 @@ export function fetchWeatherByCoords(coords) {
       .then(response => {
         response.json()
           .then(json => {
-            console.log(response, json);
             if (!response.ok) {
               dispatch(fetchGeoError(json.message));
             } else {

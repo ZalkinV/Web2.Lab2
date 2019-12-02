@@ -1,5 +1,4 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 import favReducer from "./reducers/favReducer";
@@ -9,7 +8,7 @@ import { LOCAL_STORAGE_KEY } from "./localStorage";
 
 const store = createStore(
   combineReducers({fav: favReducer, geo: geoReducer}),
-  applyMiddleware(logger, thunk)
+  applyMiddleware(thunk)
 );
 
 store.subscribe(() => {
