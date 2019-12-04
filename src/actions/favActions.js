@@ -2,10 +2,38 @@ import { API_BASE_URL } from "../api"
 
 
 export const Actions = {
+  GET_FAVORITES_SUCCESS: "GET_FAVORITES_SUCCESS",
   ADD_FAVORITE: "ADD_FAVORITE",
   DELETE_FAVORITE: "DELETE_FAVORITE",
   FETCH_FAV_SUCCESS: "FETCH_FAV_SUCCESS",
   FETCH_FAV_ERROR: "FETCH_FAV_ERROR" 
+}
+
+
+export function getFavorites() {
+  const API_URL = `${API_BASE_URL}/favourites`;
+
+  return function (dispatch) {
+    fetch(API_URL)
+      .then(response => {
+        response.json()
+          .then(json => {
+            if (!response.ok) {
+              console.log(json);
+            } else {
+              dispatch(getFavoritesSuccess(json));
+            }
+          });
+      },
+      error => console.log(error.message))
+  }
+}
+
+export function getFavoritesSuccess(cities) {
+  return {
+    type: Actions.GET_FAVORITES_SUCCESS,
+    payload: cities
+  };
 }
 
 export function addFavorite(cityName) {

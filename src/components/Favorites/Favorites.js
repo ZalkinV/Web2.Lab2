@@ -3,12 +3,16 @@ import { connect } from "react-redux";
 
 import AddFavorite from "../AddFavorite/AddFavorite"
 import Weather from "../Weather/Weather";
-import { addFavorite, deleteFavorite, fetchWeatherByCityName } from "../../actions/favActions";
+import { getFavorites, addFavorite, deleteFavorite, fetchWeatherByCityName } from "../../actions/favActions";
 
 import "./Favorites.css";
 
 
 class Favorites extends React.Component {
+  componentDidMount() {
+    this.props.getFavorites();
+  }
+
   render() {
     return (
       <div className="favorites">
@@ -49,6 +53,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    getFavorites: () => dispatch(getFavorites()),
+
     addFavorite: (cityName) => {
       dispatch(addFavorite(cityName));
     },

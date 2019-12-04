@@ -14,6 +14,11 @@ export default function favReducer(state = initialState, action) {
   };
 
   switch (action.type) {
+    case Actions.GET_FAVORITES_SUCCESS:
+      for (const city of action.payload)
+        state.favorites.set(city.cityName);
+      break;
+
     case Actions.ADD_FAVORITE:
       if (!state.favorites.has(action.payload))
         state.favorites.set(action.payload);
