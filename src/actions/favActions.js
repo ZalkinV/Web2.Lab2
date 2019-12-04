@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_BASE_PARAMETERS } from "../api"
+import { API_BASE_URL } from "../api"
 
 
 export const Actions = {
@@ -23,7 +23,7 @@ export function deleteFavorite(cityName) {
 }
 
 export function fetchWeatherByCityName(cityName) {
-  const API_URL = `${API_BASE_URL}?q=${cityName}${API_BASE_PARAMETERS}`;
+  const API_URL = `${API_BASE_URL}/weather?cityName=${cityName}`;
   
   return function(dispatch) {
     fetch(API_URL)

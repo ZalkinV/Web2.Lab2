@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_BASE_PARAMETERS } from "../api";
+import { API_BASE_URL } from "../api";
 
 export const Actions = {
   SET_GEOLOCATION: "SET_GEOLOCATION",
@@ -14,7 +14,7 @@ export function setGeolocation(coords) {
 }
 
 export function fetchWeatherByCoords(coords) {
-  const API_URL = `${API_BASE_URL}?lat=${coords.lat}&lon=${coords.lon}${API_BASE_PARAMETERS}`;
+  const API_URL = `${API_BASE_URL}/weather/coordinates?lat=${coords.lat}&lon=${coords.lon}`;
 
   return function(dispatch) {
     fetch(API_URL)
