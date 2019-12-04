@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../api"
 
 export const Actions = {
   GET_FAVORITES_SUCCESS: "GET_FAVORITES_SUCCESS",
+  GET_FAVORITES_ERROR: "GET_FAVORITES_ERROR",
   ADD_FAVORITE: "ADD_FAVORITE",
   DELETE_FAVORITE: "DELETE_FAVORITE",
   FETCH_FAV_SUCCESS: "FETCH_FAV_SUCCESS",
@@ -18,14 +19,14 @@ export function getFavorites() {
       .then(response => {
         response.json()
           .then(json => {
-            if (!response.ok) {
-              console.log(json);
-            } else {
+            if (response.ok) {
               dispatch(getFavoritesSuccess(json));
+            } else {
+              dispatch(getFavoritesError(json.message));
             }
           });
       },
-      error => console.log(error.message))
+      error => dispatch(getFavoritesError(error.message)))
   }
 }
 
@@ -33,6 +34,13 @@ export function getFavoritesSuccess(cities) {
   return {
     type: Actions.GET_FAVORITES_SUCCESS,
     payload: cities
+  };
+}
+
+export function getFavoritesError(error) {
+  return {
+    type: Actions.GET_FAVORITES_ERROR,
+    payload: error
   };
 }
 
