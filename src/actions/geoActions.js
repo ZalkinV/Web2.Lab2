@@ -28,7 +28,7 @@ export function fetchWeatherByCoords(coords) {
             }
           });
       },
-      error => dispatch(fetchGeoError(error)))
+      error => dispatch(fetchGeoError(error.message)));
   }
 }
 
