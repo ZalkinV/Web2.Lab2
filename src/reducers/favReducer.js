@@ -1,9 +1,8 @@
 import { Actions } from "../actions/favActions";
-import getFavoritesFromStorage from "../localStorage";
 import { extractWeatherParams } from "../api";
 
 const initialState = {
-  favorites: getFavoritesFromStorage()
+  favorites: new Map()
 };
 
 export default function favReducer(state = initialState, action) {
