@@ -15,7 +15,7 @@ export default function favReducer(state = initialState, action) {
     case Actions.GET_FAVORITES_SUCCESS:
       state.error = false;
       for (const city of action.payload)
-        state.favorites.set(city.cityName);
+        state.favorites.set(city.cityName, false);
       break;
 
     case Actions.GET_FAVORITES_ERROR:

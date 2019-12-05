@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 
 export default class Weather extends React.Component {
   componentDidMount() {
-    if (!this.props.forecast)
+    if (this.props.forecast === false)
       this.props.onFetch();
   }
 
