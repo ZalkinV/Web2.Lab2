@@ -33,14 +33,14 @@ export function getFavorites() {
   }
 }
 
-export function getFavoritesSuccess(cities) {
+function getFavoritesSuccess(cities) {
   return {
     type: Actions.GET_FAVORITES_SUCCESS,
     payload: cities
   };
 }
 
-export function getFavoritesError(error) {
+function getFavoritesError(error) {
   return {
     type: Actions.GET_FAVORITES_ERROR,
     payload: error
@@ -75,7 +75,7 @@ export function addFavorite(cityName) {
   }
 }
 
-export function addFavoriteSuccess(cityName, apiResponse) {
+function addFavoriteSuccess(cityName, apiResponse) {
   return {
     type: Actions.ADD_FAVORITE_SUCCESS,
     payload: {
@@ -85,7 +85,7 @@ export function addFavoriteSuccess(cityName, apiResponse) {
   };
 }
 
-export function addFavoriteError(cityName, error) {
+function addFavoriteError(cityName, error) {
   return {
     type: Actions.ADD_FAVORITE_ERROR,
     payload: {
