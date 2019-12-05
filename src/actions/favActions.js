@@ -17,19 +17,18 @@ export const Actions = {
 export function getFavorites() {
   const API_URL = `${API_BASE_URL}/favourites`;
 
-  return function (dispatch) {
-    fetch(API_URL)
-      .then(response => {
-        response.json()
-          .then(json => {
-            if (response.ok) {
-              dispatch(getFavoritesSuccess(json));
-            } else {
-              dispatch(getFavoritesError(json.message));
-            }
-          });
-      },
-      error => dispatch(getFavoritesError(error.message)))
+  return async function (dispatch) {
+    try {
+      const response = await fetch(API_URL);
+      const json = await response.json();
+
+      if (response.ok)
+        dispatch(getFavoritesSuccess(json));
+      else
+        dispatch(getFavoritesError(json.message));
+    } catch (error) {
+      dispatch(getFavoritesError(error.message));
+    }
   }
 }
 
@@ -55,23 +54,23 @@ export function addFavorite(cityName) {
     body: JSON.stringify({ cityName })
   };
 
-  return function (dispatch) {
+  return async function (dispatch) {
     dispatch({
       type: Actions.ADD_FAVORITE,
       payload: cityName
     });
 
-    fetch(API_URL, fetchOptions)
-      .then(response => {
-        response.json()
-          .then(json => {
-            if (response.ok)
-              dispatch(addFavoriteSuccess(cityName, json.forecast));
-            else
-              dispatch(addFavoriteError(cityName, json.message));
-          });
-      },
-      error => dispatch(addFavoriteError(cityName, error)))
+    try {
+      const response = await fetch(API_URL, fetchOptions);
+      const json = await response.json();
+      
+      if (response.ok)
+        dispatch(addFavoriteSuccess(cityName, json.forecast));
+      else
+        dispatch(addFavoriteError(cityName, json.message));
+    } catch (error) {
+      dispatch(addFavoriteError(cityName, error.message));
+    }
   }
 }
 
@@ -104,22 +103,22 @@ export function deleteFavorite(cityName) {
     body: JSON.stringify({ cityName }),
   };
 
-  return function(dispatch) {
+  return async function(dispatch) {
     dispatch({
       type: Actions.DELETE_FAVORITE,
       payload: cityName
     });
 
-    fetch(API_URL, fetchOptions)
-      .then(response => {
-        response.json()
-          .then(json => {
-            if (!response.ok)
-              dispatch(deleteFavoriteError(cityName, json.message));
-          });
-      },
-      error => dispatch(deleteFavoriteError(cityName, error.message)));
-  };
+    try {
+      const response = await fetch(API_URL, fetchOptions);
+      const json = response.json();
+
+      if (!response.ok)
+        dispatch(deleteFavoriteError(cityName, json.message));
+    } catch (error) {
+      dispatch(deleteFavoriteError(cityName, error.message));
+    }
+  }
 }
 
 function deleteFavoriteError(error) {
@@ -132,19 +131,19 @@ function deleteFavoriteError(error) {
 export function fetchWeatherByCityName(cityName) {
   const API_URL = `${API_BASE_URL}/weather?cityName=${cityName}`;
   
-  return function(dispatch) {
-    fetch(API_URL)
-      .then(response => {
-        response.json()
-          .then(json => {
-            if (!response.ok) {
-              dispatch(fetchFavError(json.message, cityName));
-            } else {
-              dispatch(fetchFavSuccess(json, cityName));
-            }
-          });
-      },
-      error => dispatch(fetchFavError(error.message, cityName)))
+  return async function(dispatch) {
+    try {
+      const response = await fetch(API_URL);
+      const json = await response.json();
+
+      if (response.ok) {
+        dispatch(fetchFavSuccess(json, cityName));
+      } else {
+        dispatch(fetchFavError(json.message, cityName));
+      }
+    } catch (error) {
+      dispatch(fetchFavError(error.message, cityName));
+    }
   }
 }
 
