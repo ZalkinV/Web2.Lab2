@@ -54,18 +54,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getFavorites: () => dispatch(getFavorites()),
-
-    addFavorite: (cityName) => {
-      dispatch(addFavorite(cityName));
-    },
-
-    deleteFavorite: (cityName) => {
-      dispatch(deleteFavorite(cityName)); 
-    },
-
-    fetchWeatherByCityName: (cityName) => {
-      dispatch(fetchWeatherByCityName(cityName));
-    }
+    addFavorite: cityName => dispatch(addFavorite(cityName)),
+    deleteFavorite: cityName => dispatch(deleteFavorite(cityName)), 
+    fetchWeatherByCityName: cityName => dispatch(fetchWeatherByCityName(cityName)),
   };
 }
 
