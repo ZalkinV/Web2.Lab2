@@ -67,6 +67,7 @@ export default function favReducer(state = initialState, action) {
 
 function updateFavorite(state, oldCityName, apiResponse) {
   const forecast = extractWeatherParams(apiResponse);
-  state.favorites.delete(oldCityName);
+  if (oldCityName !== forecast.cityName)
+    state.favorites.delete(oldCityName);
   state.favorites.set(forecast.cityName, forecast);
 }
