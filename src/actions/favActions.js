@@ -7,7 +7,7 @@ export const Actions = {
   ADD_FAVORITE: "ADD_FAVORITE",
   ADD_FAVORITE_SUCCESS: "ADD_FAVORITE_SUCCESS",
   ADD_FAVORITE_ERROR: "ADD_FAVORITE_ERROR",
-  DELETE_FAVORITE: "DELETE_FAVORITE",
+  DELETE_FAVORITE_SUCCESS: "DELETE_FAVORITE_SUCCESS",
   DELETE_FAVORITE_ERROR: "DELETE_FAVORITE_ERROR",
   FETCH_FAV_SUCCESS: "FETCH_FAV_SUCCESS",
   FETCH_FAV_ERROR: "FETCH_FAV_ERROR" 
@@ -104,21 +104,25 @@ export function deleteFavorite(cityName) {
   };
 
   return async function(dispatch) {
-    dispatch({
-      type: Actions.DELETE_FAVORITE,
-      payload: cityName
-    });
-
     try {
       const response = await fetch(API_URL, fetchOptions);
       const json = response.json();
 
-      if (!response.ok)
-        dispatch(deleteFavoriteError(cityName, json.message));
+      if (response.ok)
+        dispatch(deleteFavoriteSuccess(cityName));
+      else
+        dispatch(deleteFavoriteError(json.message));
     } catch (error) {
-      dispatch(deleteFavoriteError(cityName, error.message));
+      dispatch(deleteFavoriteError(error.message));
     }
   }
+}
+
+function deleteFavoriteSuccess(cityName) {
+  return {
+    type: Actions.DELETE_FAVORITE_SUCCESS,
+    payload: cityName
+  };
 }
 
 function deleteFavoriteError(error) {

@@ -38,7 +38,7 @@ export default function favReducer(state = initialState, action) {
       state.favorites.delete(action.payload.cityName);
       break;
 
-    case Actions.DELETE_FAVORITE:
+    case Actions.DELETE_FAVORITE_SUCCESS:
       state.error = false;
       state.favorites.delete(action.payload);
       break;
