@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<WeatherParam /> render should has name 1`] = `
+exports[`<WeatherParam /> render should have name 1`] = `
 <div
   className="param"
 >
@@ -15,7 +15,7 @@ exports[`<WeatherParam /> render should has name 1`] = `
 </div>
 `;
 
-exports[`<WeatherParam /> render should has name and value 1`] = `
+exports[`<WeatherParam /> render should have name and value 1`] = `
 <div
   className="param"
 >
@@ -32,7 +32,7 @@ exports[`<WeatherParam /> render should has name and value 1`] = `
 </div>
 `;
 
-exports[`<WeatherParam /> render should has nothing 1`] = `
+exports[`<WeatherParam /> render should have nothing 1`] = `
 <div
   className="param"
 >
@@ -45,7 +45,7 @@ exports[`<WeatherParam /> render should has nothing 1`] = `
 </div>
 `;
 
-exports[`<WeatherParam /> render should has value 1`] = `
+exports[`<WeatherParam /> render should have value 1`] = `
 <div
   className="param"
 >

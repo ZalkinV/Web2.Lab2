@@ -36,7 +36,7 @@ describe("<Favorites /> render", () => {
     delete global.fetch;
   });
 
-  test("should has error and empty favorites", () => {
+  test("should have error and empty favorites", () => {
     const store = storeCreator({
       fav: {
         error: "test error message",
@@ -55,7 +55,7 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has favorites with 1 loading element", () => {
+  test("should have favorites with 1 loading element", () => {
     const store = storeCreator({
       fav: {
         favorites: new Map([["firstLoadingCity", undefined]])
@@ -73,7 +73,7 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has error and favorites with 1 element", () => {
+  test("should have error and favorites with 1 element", () => {
     const store = storeCreator({
       fav: {
         error: "test error message",
@@ -92,7 +92,7 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has empty favorites", () => {
+  test("should have empty favorites", () => {
     const store = storeCreator({
       fav: {
         favorites: new Map()
@@ -110,7 +110,7 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has favorites with 1 element", () => {
+  test("should have favorites with 1 element", () => {
     const store = storeCreator({
       fav: {
         favorites: new Map([["firstCity", DEFAULT_FORECAST]])
@@ -128,7 +128,7 @@ describe("<Favorites /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has favorites with 2 element", () => {
+  test("should have favorites with 2 element", () => {
     const store = storeCreator({
       fav: {
         favorites: new Map([

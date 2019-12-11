@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AddFavorite /> render should has form with text input and button 1`] = `
+exports[`<AddFavorite /> render should have form with text input and button 1`] = `
 <form
   className="add-favorite"
   onSubmit={[Function]}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Geolocation /> render should has coords and forecast 1`] = `
+exports[`<Geolocation /> render should have coords and forecast 1`] = `
 <div
   className="geolocation"
 >
@@ -111,7 +111,7 @@ exports[`<Geolocation /> render should has coords and forecast 1`] = `
 </div>
 `;
 
-exports[`<Geolocation /> render should has error 1`] = `
+exports[`<Geolocation /> render should have error 1`] = `
 <div
   className="geolocation"
 >
@@ -135,7 +135,7 @@ exports[`<Geolocation /> render should has error 1`] = `
 </div>
 `;
 
-exports[`<Geolocation /> render should has only coords 1`] = `
+exports[`<Geolocation /> render should have only coords 1`] = `
 <div
   className="geolocation"
 >

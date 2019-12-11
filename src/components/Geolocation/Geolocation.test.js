@@ -41,7 +41,7 @@ describe("<Geolocation /> render", () => {
     delete global.fetch;
   });
 
-  test("should has only coords", () => {
+  test("should have only coords", () => {
     const store = storeCreator({
       geo: {
         coords: DEFAULT_COORDS
@@ -58,7 +58,7 @@ describe("<Geolocation /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has coords and forecast", () => {
+  test("should have coords and forecast", () => {
     const store = storeCreator({
       geo: {
         coords: DEFAULT_COORDS,
@@ -76,7 +76,7 @@ describe("<Geolocation /> render", () => {
       expect(tree).toMatchSnapshot();
   });
 
-  test("should has error", () => {
+  test("should have error", () => {
     const store = storeCreator({
       geo: {
         error: "test error message"

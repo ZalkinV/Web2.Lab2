@@ -5,7 +5,7 @@ import Loader from "./Loader";
 
 describe("<Loader /> render", () => {
 
-  test("should has loader image and text", () => {
+  test("should have loader image and text", () => {
     const tree = renderer
       .create(<Loader />)
       .toJSON();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Favorites /> render should has empty favorites 1`] = `
+exports[`<Favorites /> render should have empty favorites 1`] = `
 <div
   className="favorites"
 >
@@ -30,7 +30,7 @@ exports[`<Favorites /> render should has empty favorites 1`] = `
 </div>
 `;
 
-exports[`<Favorites /> render should has error and empty favorites 1`] = `
+exports[`<Favorites /> render should have error and empty favorites 1`] = `
 <div
   className="favorites"
 >
@@ -66,7 +66,7 @@ exports[`<Favorites /> render should has error and empty favorites 1`] = `
 </div>
 `;
 
-exports[`<Favorites /> render should has error and favorites with 1 element 1`] = `
+exports[`<Favorites /> render should have error and favorites with 1 element 1`] = `
 <div
   className="favorites"
 >
@@ -202,7 +202,7 @@ exports[`<Favorites /> render should has error and favorites with 1 element 1`] 
 </div>
 `;
 
-exports[`<Favorites /> render should has favorites with 1 element 1`] = `
+exports[`<Favorites /> render should have favorites with 1 element 1`] = `
 <div
   className="favorites"
 >
@@ -332,7 +332,7 @@ exports[`<Favorites /> render should has favorites with 1 element 1`] = `
 </div>
 `;
 
-exports[`<Favorites /> render should has favorites with 1 loading element 1`] = `
+exports[`<Favorites /> render should have favorites with 1 loading element 1`] = `
 <div
   className="favorites"
 >
@@ -374,7 +374,7 @@ exports[`<Favorites /> render should has favorites with 1 loading element 1`] = 
 </div>
 `;
 
-exports[`<Favorites /> render should has favorites with 2 element 1`] = `
+exports[`<Favorites /> render should have favorites with 2 element 1`] = `
 <div
   className="favorites"
 >

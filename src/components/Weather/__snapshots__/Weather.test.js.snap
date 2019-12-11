@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Weather /> render should has <Loader /> 1`] = `
+exports[`<Weather /> render should have <Loader /> 1`] = `
 <div
   className="loader"
 >
@@ -14,7 +14,7 @@ exports[`<Weather /> render should has <Loader /> 1`] = `
 </div>
 `;
 
-exports[`<Weather /> render should has <Loader /> even if onDelete given 1`] = `
+exports[`<Weather /> render should have <Loader /> even if onDelete given 1`] = `
 <div
   className="loader"
 >
@@ -28,7 +28,7 @@ exports[`<Weather /> render should has <Loader /> even if onDelete given 1`] = `
 </div>
 `;
 
-exports[`<Weather /> render should has forecast and delete button 1`] = `
+exports[`<Weather /> render should have forecast and delete button 1`] = `
 <div
   className="weather"
 >
@@ -130,7 +130,7 @@ exports[`<Weather /> render should has forecast and delete button 1`] = `
 </div>
 `;
 
-exports[`<Weather /> render should has forecast and no delete button 1`] = `
+exports[`<Weather /> render should have forecast and no delete button 1`] = `
 <div
   className="weather"
 >

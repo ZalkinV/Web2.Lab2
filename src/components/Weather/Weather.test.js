@@ -20,7 +20,7 @@ describe("<Weather /> render", () => {
     }
   };
 
-  test("should has forecast and delete button", () => {
+  test("should have forecast and delete button", () => {
     const tree = renderer
       .create(
         <Weather
@@ -33,7 +33,7 @@ describe("<Weather /> render", () => {
     expect(tree).toMatchSnapshot();
   });
   
-  test("should has forecast and no delete button", () => {
+  test("should have forecast and no delete button", () => {
     const tree = renderer
       .create(
         <Weather
@@ -45,7 +45,7 @@ describe("<Weather /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has <Loader />", () => {
+  test("should have <Loader />", () => {
     const tree = renderer
       .create(
         <Weather
@@ -56,7 +56,7 @@ describe("<Weather /> render", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has <Loader /> even if onDelete given", () => {
+  test("should have <Loader /> even if onDelete given", () => {
     const tree = renderer
       .create(
         <Weather

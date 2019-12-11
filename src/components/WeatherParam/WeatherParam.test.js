@@ -11,7 +11,7 @@ describe("<WeatherParam /> render", () =>{
     value: "25",
   };
 
-  test("should has name and value", () => {
+  test("should have name and value", () => {
     const { name, value } = DEFAULT_PROPS;
     
     const tree = renderer
@@ -25,7 +25,7 @@ describe("<WeatherParam /> render", () =>{
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has name", () => {
+  test("should have name", () => {
     const { name } = DEFAULT_PROPS;
     
     const tree = renderer
@@ -38,7 +38,7 @@ describe("<WeatherParam /> render", () =>{
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has value", () => {
+  test("should have value", () => {
     const { value } = DEFAULT_PROPS;
     
     const tree = renderer
@@ -51,7 +51,7 @@ describe("<WeatherParam /> render", () =>{
     expect(tree).toMatchSnapshot();
   });
 
-  test("should has nothing", () => {
+  test("should have nothing", () => {
     const tree = renderer
       .create(
         <WeatherParam />)

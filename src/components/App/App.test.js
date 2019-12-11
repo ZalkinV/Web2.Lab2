@@ -16,7 +16,7 @@ describe("<App /> render", () => {
     geo: {}
   });
 
-  test("should has <Favorites /> and <Geolocation /> with empty state", () => {
+  test("should have <Favorites /> and <Geolocation /> with empty state", () => {
     const tree = renderer
       .create(
         <Provider store={DEFAULT_STORE}>
