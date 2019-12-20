@@ -21,7 +21,6 @@ class Geolocation extends React.Component {
         >Get geolocation</button>
         {!this.props.error ? this.props.coords && (
           <Weather
-            onFetch={() => this.props.fetchWeatherByCoords(this.props.coords)}
             forecast={this.props.forecast}/>
         ) : (
           <div className="error">Error: {this.props.error}</div>
